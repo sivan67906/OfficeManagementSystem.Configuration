@@ -20,6 +20,7 @@ public static class ServiceContainer
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<IConsumerService, ConsumerService>();
         services.AddScoped<IStateService, StateService>();
+        services.AddScoped<ICityService, CityService>();
 
         return services;
     }

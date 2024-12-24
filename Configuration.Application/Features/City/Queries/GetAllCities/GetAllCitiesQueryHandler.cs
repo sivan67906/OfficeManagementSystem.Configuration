@@ -1,22 +1,23 @@
-using MediatR;
 using Configuration.Application.DTOs;
+using Configuration.Domain.Entities;
 using Configuration.Domain.Interfaces;
+using MediatR;
 
 namespace Configuration.Application.Features.Cities.Queries.GetAllCities;
 
 internal class GetAllCitiesQueryHandler : IRequestHandler<GetAllCitiesQuery, IEnumerable<CityDTO>>
 {
-    private readonly IGenericRepository<CityDTO> _cityRepository;
+    private readonly IGenericRepository<City> _cityRepository;
 
     public GetAllCitiesQueryHandler(
-        IGenericRepository<CityDTO> cityRepository) =>
+        IGenericRepository<City> cityRepository) =>
         _cityRepository = cityRepository;
 
     public async Task<IEnumerable<CityDTO>> Handle(GetAllCitiesQuery request, CancellationToken cancellationToken)
     {
-        var companies = await _cityRepository.GetAllAsync();
+        var cities = await _cityRepository.GetAllAsync();
 
-        var cityList = companies.Select(x => new CityDTO
+        var cityList = cities.Select(x => new CityDTO
         {
             Id = x.Id,
             Name = x.Name,

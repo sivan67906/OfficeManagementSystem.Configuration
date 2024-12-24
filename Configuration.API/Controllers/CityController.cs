@@ -1,10 +1,11 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Configuration.Application.Features.Cities.Commands.CreateCity;
+﻿using Configuration.Application.Features.Cities.Commands.CreateCity;
 using Configuration.Application.Features.Cities.Commands.DeleteCity;
 using Configuration.Application.Features.Cities.Commands.UpdateCity;
 using Configuration.Application.Features.Cities.Queries.GetAllCities;
+using Configuration.Application.Features.Cities.Queries.GetCitiesByParentId;
 using Configuration.Application.Features.Cities.Queries.GetCityById;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Configuration.API.Controllers;
 
@@ -29,7 +30,13 @@ public class CityController : ControllerBase
         if (city is not null) { return Ok(city); }
         return NotFound();
     }
-
+    [HttpGet("GetByParentId")]
+    public async Task<IActionResult> GetByParentId(int parentId)
+    {
+        var state = await _mediator.Send(new GetCitiesByParentIdQuery { StateId = parentId });
+        if (state is not null) { return Ok(state); }
+        return NotFound();
+    }
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateCityCommand command)
     {

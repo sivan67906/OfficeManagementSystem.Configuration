@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\SearchConsumer\**" />
+    <EmbeddedResource Remove="Features\SearchConsumer\**" />
+    <None Remove="Features\SearchConsumer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EditorConfigFiles Remove="D:\Workspace\OMS\OfficeManagementSystem.Configuration\Configuration.Application\.editorconfig" />
   </ItemGroup>
 

@@ -1,11 +1,11 @@
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Configuration.Application.Features.States.Commands.CreateState;
 using Configuration.Application.Features.States.Commands.DeleteState;
 using Configuration.Application.Features.States.Commands.UpdateState;
 using Configuration.Application.Features.States.Queries.GetAllStates;
 using Configuration.Application.Features.States.Queries.GetStateById;
 using Configuration.Application.Features.States.Queries.GetStatesByParentId;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Configuration.API.Controllers;
 

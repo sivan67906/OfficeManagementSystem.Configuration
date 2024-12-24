@@ -2,8 +2,11 @@
 using Configuration.Application.Features.Consumers.Commands.DeleteConsumer;
 using Configuration.Application.Features.Consumers.Commands.UpdateConsumer;
 using Configuration.Application.Features.Consumers.Queries.GetAllConsumers;
+using Configuration.Application.Features.Consumers.Queries.GetConsumerByDateBetween;
 using Configuration.Application.Features.Consumers.Queries.GetConsumerById;
 using Configuration.Application.Features.Consumers.Queries.GetConsumerByName;
+using Configuration.Application.Features.Consumers.Queries.GetConsumersByDate;
+using Configuration.Application.Features.Consumers.Queries.GetConsumersByPhone;
 using Configuration.Application.Features.Consumers.Queries.GetConsumersBySearch;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +47,29 @@ public class ConsumerController : ControllerBase
     public async Task<IActionResult> GetSearchByConsumerName(string consumerName)
     {
         var consumer = await _mediator.Send(new GetConsumersBySearchQuery { ConsumerName = consumerName });
+        if (consumer is not null) { return Ok(consumer); }
+        return NotFound();
+    }
+    [HttpGet("{consumerPhoneNumber}")]
+    public async Task<IActionResult> GetSearchByPhoneNumber(string consumerPhoneNumber)
+    {
+        var consumer = await _mediator.Send(new GetConsumersByPhoneQuery { PhoneNumber = consumerPhoneNumber });
+        if (consumer is not null) { return Ok(consumer); }
+        return NotFound();
+    }
+
+    [HttpGet("{searchDate}")]
+    public async Task<IActionResult> GetSearchByDate(DateTime searchDate)
+    {
+        var consumer = await _mediator.Send(new GetConsumersByDateQuery { SearchDate = searchDate });
+        if (consumer is not null) { return Ok(consumer); }
+        return NotFound();
+    }
+
+    [HttpGet("{startDate}/{endDate}")]
+    public async Task<IActionResult> GetSearchByDateBetween(DateTime startDate, DateTime endDate)
+    {
+        var consumer = await _mediator.Send(new GetConsumerByDateBetweenQuery { StartDate = startDate, EndDate = endDate });
         if (consumer is not null) { return Ok(consumer); }
         return NotFound();
     }

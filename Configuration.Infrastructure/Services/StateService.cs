@@ -9,7 +9,8 @@ public class StateService(IGenericRepository<State> stateRepository)
 {
     public async Task<IEnumerable<State>> GetStatesByParentId(int countryId)
     {
-        var consumers = await stateRepository.GetAllAsync();
-        return consumers.Where(x => x.CountryId == countryId && x.IsActive == true);
+        var states = await stateRepository.GetAllAsync();
+        var finalStateList = states.Where(x => x.CountryId == countryId && x.IsActive == true);
+        return finalStateList;
     }
 }

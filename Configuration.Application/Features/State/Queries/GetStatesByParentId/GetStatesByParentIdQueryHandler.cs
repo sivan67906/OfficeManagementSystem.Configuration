@@ -1,6 +1,6 @@
-﻿using MediatR;
-using Configuration.Application.DTOs;
+﻿using Configuration.Application.DTOs;
 using Configuration.Application.Services;
+using MediatR;
 
 namespace Configuration.Application.Features.States.Queries.GetStatesByParentId;
 public class GetStatesByParentIdQueryHandler : IRequestHandler<GetStatesByParentIdQuery, IEnumerable<StateDTO>>

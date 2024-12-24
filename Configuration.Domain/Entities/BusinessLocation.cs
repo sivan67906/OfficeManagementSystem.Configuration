@@ -8,16 +8,16 @@ public sealed class BusinessLocation
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-    public string Code { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
+    public string? Code { get; set; }
+    public string? Name { get; set; }
     public int CompanyId { get; set; }
     public int AddressId { get; set; }
     public int CountryId { get; set; }
     public int StateId { get; set; }
     public int CityId { get; set; }
-    public string TaxName { get; set; } = string.Empty;
-    public string TaxNumber { get; set; } = string.Empty;
-    public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+    public string? TaxName { get; set; }
+    public string? TaxNumber { get; set; }
+    public DateTime CreatedDate { get; set; }
     public DateTime? UpdatedDate { get; set; }
     public bool IsActive { get; set; } = true;
 

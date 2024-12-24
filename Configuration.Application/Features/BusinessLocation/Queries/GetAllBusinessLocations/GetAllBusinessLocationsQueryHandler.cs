@@ -23,6 +23,7 @@ internal class GetAllBusinessLocationsQueryHandler : IRequestHandler<GetAllBusin
             Code = x.Code,
             Name = x.Name,
             CompanyId = x.CompanyId,
+            CompanyName = x.Company.Name,
             AddressId = x.AddressId,
             Address1 = x.Address.Address1,
             Address2 = x.Address.Address2,
