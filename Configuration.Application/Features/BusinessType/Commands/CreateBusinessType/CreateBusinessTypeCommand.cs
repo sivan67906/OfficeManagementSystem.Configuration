@@ -4,7 +4,8 @@ namespace Configuration.Application.Features.BusinessTypes.Commands.CreateBusine
 
 public class CreateBusinessTypeCommand : IRequest
 {
-
+    public string? Code { get; set; }
+    public string? Name { get; set; }
 }
 
 

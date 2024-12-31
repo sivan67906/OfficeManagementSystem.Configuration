@@ -25,7 +25,7 @@ internal class GetAllConsumersQueryHandler : IRequestHandler<GetAllConsumersQuer
             Email = x.Email,
             Password = x.Password,
             PlanTypeId = x.PlanTypeId,
-            PlanTypeName = x.PlanType?.Name,
+            Name = x.PlanType?.Name,
             PhoneNumber = x.PhoneNumber,
             Website = x.Website,
             Description = x.Description,

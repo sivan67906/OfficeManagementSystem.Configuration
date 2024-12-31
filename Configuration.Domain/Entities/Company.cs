@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Settings.Domain.Entities;
 
 namespace Configuration.Domain.Entities;
 
@@ -25,7 +26,7 @@ public sealed class Company
     public BusinessType? BusinessType { get; set; }
 
     [ForeignKey(nameof(CategoryId))]
-    public Category? Category { get; set; }
+    public BusinessCategory? Category { get; set; }
     public ICollection<BusinessLocation>? BusinessLocations { get; set; }
     public ICollection<Department>? Departments { get; set; }
     public ICollection<Designation>? Designations { get; set; }

@@ -11,7 +11,10 @@ internal class CreateBusinessTypeCommandHandler(
     {
         var businessType = new BusinessType
         {
-
+            Code = request.Code,
+            Name = request.Name,
+            CreatedDate = DateTime.Now,
+            IsActive = true
         };
 
         await businessTypeRepository.CreateAsync(businessType);

@@ -16,6 +16,10 @@ internal class UpdateBusinessTypeCommandHandler : IRequestHandler<UpdateBusiness
     {
         var businessType = new BusinessType
         {
+            Id = request.Id,
+            Code = request.Code,
+            Name = request.Name,
+            UpdatedDate = DateTime.Now
         };
 
         await _businessTypeRepository.UpdateAsync(businessType);

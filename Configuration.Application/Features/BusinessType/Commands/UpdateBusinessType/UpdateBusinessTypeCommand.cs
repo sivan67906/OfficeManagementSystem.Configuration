@@ -4,6 +4,9 @@ namespace Configuration.Application.Features.BusinessTypes.Commands.UpdateBusine
 
 public class UpdateBusinessTypeCommand : IRequest
 {
+    public int Id { get; set; }
+    public string? Code { get; set; }
+    public string? Name { get; set; }
 }
 
 

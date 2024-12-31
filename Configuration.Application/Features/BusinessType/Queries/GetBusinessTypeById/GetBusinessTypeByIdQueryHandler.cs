@@ -18,6 +18,9 @@ internal class GetBusinessTypeByIdQueryHandler : IRequestHandler<GetBusinessType
         if (businessType == null) return null;
         return new BusinessTypeDTO
         {
+            Id = businessType.Id,
+            Code = businessType.Code,
+            Name = businessType.Name
         };
     }
 }

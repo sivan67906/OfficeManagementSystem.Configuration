@@ -14,9 +14,9 @@ internal class GetAllBusinessTypesQueryHandler : IRequestHandler<GetAllBusinessT
 
     public async Task<IEnumerable<BusinessTypeDTO>> Handle(GetAllBusinessTypesQuery request, CancellationToken cancellationToken)
     {
-        var companies = await _businessTypeRepository.GetAllAsync();
+        var businessTypes = await _businessTypeRepository.GetAllAsync();
 
-        var businessTypeList = companies.Select(x => new BusinessTypeDTO
+        var businessTypeList = businessTypes.Select(x => new BusinessTypeDTO
         {
             Id = x.Id,
             Code = x.Code,

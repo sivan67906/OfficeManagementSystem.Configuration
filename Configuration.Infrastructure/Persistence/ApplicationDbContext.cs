@@ -1,5 +1,6 @@
 ﻿using Configuration.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Settings.Domain.Entities;
 
 namespace Configuration.Infrastructure.Persistence;
 
@@ -28,11 +29,12 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         modelBuilder.Entity<BusinessLocation>().Navigation(e => e.Country).AutoInclude();
         modelBuilder.Entity<BusinessLocation>().Navigation(e => e.State).AutoInclude();
         modelBuilder.Entity<BusinessLocation>().Navigation(e => e.City).AutoInclude();
+        modelBuilder.Entity<BusinessCategory>().Navigation(e => e.BusinessType).AutoInclude();
     }
     public DbSet<Consumer> Consumers { get; set; }
     public DbSet<PlanType> PlanTypes { get; set; }
     public DbSet<Company> Companies { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<BusinessCategory> BusinessCategories { get; set; }
     public DbSet<BusinessType> BusinessTypes { get; set; }
     public DbSet<BusinessLocation> BusinessLocations { get; set; }
     public DbSet<Department> Departments { get; set; }

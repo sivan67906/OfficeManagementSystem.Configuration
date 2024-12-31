@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Category\**" />
     <Compile Remove="Features\SearchConsumer\**" />
+    <EmbeddedResource Remove="Features\Category\**" />
     <EmbeddedResource Remove="Features\SearchConsumer\**" />
+    <None Remove="Features\Category\**" />
     <None Remove="Features\SearchConsumer\**" />
   </ItemGroup>
 
@@ -26,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Features\PlanType\Commands\" />
   </ItemGroup>
 
 </Project>

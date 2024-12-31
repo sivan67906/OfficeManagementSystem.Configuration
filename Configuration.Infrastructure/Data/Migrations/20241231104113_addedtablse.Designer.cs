@@ -4,6 +4,7 @@ using Configuration.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Configuration.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241231104113_addedtablse")]
+    partial class addedtablse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,61 +252,6 @@ namespace Configuration.Infrastructure.Data.Migrations
                     b.ToTable("Company");
                 });
 
-            modelBuilder.Entity("Configuration.Domain.Entities.Consumer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PlanTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Website")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlanTypeId");
-
-                    b.ToTable("Consumer");
-                });
-
             modelBuilder.Entity("Configuration.Domain.Entities.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -418,36 +366,6 @@ namespace Configuration.Infrastructure.Data.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Designation");
-                });
-
-            modelBuilder.Entity("Configuration.Domain.Entities.PlanType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PlanTypes");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.Role", b =>
@@ -650,17 +568,6 @@ namespace Configuration.Infrastructure.Data.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Configuration.Domain.Entities.Consumer", b =>
-                {
-                    b.HasOne("Configuration.Domain.Entities.PlanType", "PlanType")
-                        .WithMany("Consumers")
-                        .HasForeignKey("PlanTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PlanType");
-                });
-
             modelBuilder.Entity("Configuration.Domain.Entities.Department", b =>
                 {
                     b.HasOne("Configuration.Domain.Entities.Company", "Company")
@@ -773,11 +680,6 @@ namespace Configuration.Infrastructure.Data.Migrations
             modelBuilder.Entity("Configuration.Domain.Entities.Designation", b =>
                 {
                     b.Navigation("Roles");
-                });
-
-            modelBuilder.Entity("Configuration.Domain.Entities.PlanType", b =>
-                {
-                    b.Navigation("Consumers");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.State", b =>
