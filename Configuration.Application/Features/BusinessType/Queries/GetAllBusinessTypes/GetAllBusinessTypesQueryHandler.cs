@@ -19,11 +19,8 @@ internal class GetAllBusinessTypesQueryHandler : IRequestHandler<GetAllBusinessT
         var businessTypeList = companies.Select(x => new BusinessTypeDTO
         {
             Id = x.Id,
-            Name = x.Name,
             Code = x.Code,
-            CreatedDate = x.CreatedDate,
-            UpdatedDate = x.UpdatedDate,
-            IsActive = x.IsActive
+            Name = x.Name
         }).ToList();
 
         return businessTypeList;
