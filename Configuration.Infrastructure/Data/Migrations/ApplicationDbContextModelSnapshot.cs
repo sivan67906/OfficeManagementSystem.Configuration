@@ -64,7 +64,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.BusinessLocation", b =>
@@ -123,7 +123,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("BusinessLocation");
+                    b.ToTable("BusinessLocations");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.BusinessType", b =>
@@ -187,7 +187,56 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("City");
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Configuration.Domain.Entities.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("clients");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.Company", b =>
@@ -246,7 +295,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Company");
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.Consumer", b =>
@@ -301,7 +350,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("PlanTypeId");
 
-                    b.ToTable("Consumer");
+                    b.ToTable("Consumers");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.Country", b =>
@@ -330,7 +379,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Country");
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.Department", b =>
@@ -373,7 +422,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.Designation", b =>
@@ -417,7 +466,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Designation");
+                    b.ToTable("Designations");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.PlanType", b =>
@@ -496,7 +545,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("DesignationId");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Configuration.Domain.Entities.State", b =>
@@ -530,7 +579,7 @@ namespace Configuration.Infrastructure.Data.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("State");
+                    b.ToTable("States");
                 });
 
             modelBuilder.Entity("Settings.Domain.Entities.BusinessCategory", b =>
