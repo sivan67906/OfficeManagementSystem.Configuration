@@ -58,10 +58,10 @@ public class ConsumerController : ControllerBase
         return NotFound();
     }
 
-    [HttpGet("{searchDate}")]
-    public async Task<IActionResult> GetSearchByDate(DateTime searchDate)
+    [HttpGet("searchDate1")]
+    public async Task<IActionResult> GetSearchByDate(string searchDate)
     {
-        var consumer = await _mediator.Send(new GetConsumersByDateQuery { SearchDate = searchDate });
+        var consumer = await _mediator.Send(new GetConsumersByDateQuery { SearchDate = Convert.ToDateTime(searchDate) });
         if (consumer is not null) { return Ok(consumer); }
         return NotFound();
     }

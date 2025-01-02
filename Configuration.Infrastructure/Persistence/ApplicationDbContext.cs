@@ -33,16 +33,16 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     }
     public DbSet<Consumer> Consumers { get; set; }
     public DbSet<PlanType> PlanTypes { get; set; }
-    public DbSet<Company> Companies { get; set; }
+    //public DbSet<Company> Companies { get; set; }
     public DbSet<BusinessCategory> BusinessCategories { get; set; }
-    public DbSet<BusinessType> BusinessTypes { get; set; }
-    public DbSet<BusinessLocation> BusinessLocations { get; set; }
-    public DbSet<Department> Departments { get; set; }
-    public DbSet<Designation> Designations { get; set; }
-    public DbSet<Role> Roles { get; set; }
-    public DbSet<Client> clients { get; set; }
-    public DbSet<State> States { get; set; }
-    public DbSet<Country> Countries { get; set; }
-    public DbSet<City> Cities { get; set; }
-    public DbSet<Address> Addresses { get; set; }
+    //public DbSet<BusinessType> BusinessTypes { get; set; }
+    //public DbSet<BusinessLocation> BusinessLocations { get; set; }
+    //public DbSet<Department> Departments { get; set; }
+    //public DbSet<Designation> Designations { get; set; }
+    //public DbSet<Role> Roles { get; set; }
+    //public DbSet<Client> clients { get; set; }
+    //public DbSet<State> States { get; set; }
+    //public DbSet<Country> Countries { get; set; }
+    //public DbSet<City> Cities { get; set; }
+    //public DbSet<Address> Addresses { get; set; }
 }

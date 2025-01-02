@@ -23,6 +23,7 @@ internal class GetConsumersByDateQueryHandler : IRequestHandler<GetConsumersByDa
             Email = x.Email,
             Password = x.Password,
             PlanTypeId = x.PlanTypeId,
+            PlanTypeName = x.PlanType.Name,
             PhoneNumber = x.PhoneNumber,
             Website = x.Website,
             Description = x.Description,

@@ -4,7 +4,7 @@ public class BusinessLocationDTO
 {
     public int Id { get; set; }
     public string Code { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; }
     public int CompanyId { get; set; }
     public string? CompanyName { get; set; }
     public int AddressId { get; set; }

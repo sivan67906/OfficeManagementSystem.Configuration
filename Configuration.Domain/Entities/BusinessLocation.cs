@@ -9,6 +9,7 @@ public sealed class BusinessLocation
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public string? Code { get; set; }
+    [Required]
     public string? Name { get; set; }
     public int CompanyId { get; set; }
     public int AddressId { get; set; }

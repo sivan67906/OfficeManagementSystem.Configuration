@@ -8,7 +8,7 @@ public class ConsumerDTO
     public string? Email { get; set; }
     public string? Password { get; set; }
     public int PlanTypeId { get; set; }
-    public string? Name { get; set; }
+    public string? PlanTypeName { get; set; }
     public string? PhoneNumber { get; set; }
     public string? Website { get; set; }
     public string? Description { get; set; }

@@ -5,13 +5,13 @@
 namespace Configuration.Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class one : Migration
+    public partial class kl21hjass2df : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BusinessTypes",
+                name: "BusinessType",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,35 +24,11 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BusinessTypes", x => x.Id);
+                    table.PrimaryKey("PK_BusinessType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClientName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ZipCode = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_clients", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Countries",
+                name: "Country",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -65,7 +41,7 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Countries", x => x.Id);
+                    table.PrimaryKey("PK_Country", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -102,15 +78,15 @@ namespace Configuration.Infrastructure.Data.Migrations
                 {
                     table.PrimaryKey("PK_BusinessCategories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BusinessCategories_BusinessTypes_BusinessTypeId",
+                        name: "FK_BusinessCategories_BusinessType_BusinessTypeId",
                         column: x => x.BusinessTypeId,
-                        principalTable: "BusinessTypes",
+                        principalTable: "BusinessType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "States",
+                name: "State",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -124,11 +100,11 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_States", x => x.Id);
+                    table.PrimaryKey("PK_State", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_States_Countries_CountryId",
+                        name: "FK_State_Country_CountryId",
                         column: x => x.CountryId,
-                        principalTable: "Countries",
+                        principalTable: "Country",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
@@ -163,7 +139,7 @@ namespace Configuration.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Companies",
+                name: "Company",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -183,23 +159,23 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Companies", x => x.Id);
+                    table.PrimaryKey("PK_Company", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Companies_BusinessCategories_CategoryId",
+                        name: "FK_Company_BusinessCategories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "BusinessCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_Companies_BusinessTypes_BusinessTypeId",
+                        name: "FK_Company_BusinessType_BusinessTypeId",
                         column: x => x.BusinessTypeId,
-                        principalTable: "BusinessTypes",
+                        principalTable: "BusinessType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cities",
+                name: "City",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -213,17 +189,17 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cities", x => x.Id);
+                    table.PrimaryKey("PK_City", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cities_States_StateId",
+                        name: "FK_City_State_StateId",
                         column: x => x.StateId,
-                        principalTable: "States",
+                        principalTable: "State",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Departments",
+                name: "Department",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -239,17 +215,17 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departments", x => x.Id);
+                    table.PrimaryKey("PK_Department", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Departments_Companies_CompanyId",
+                        name: "FK_Department_Company_CompanyId",
                         column: x => x.CompanyId,
-                        principalTable: "Companies",
+                        principalTable: "Company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Addresses",
+                name: "Address",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -267,17 +243,17 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
+                    table.PrimaryKey("PK_Address", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Addresses_Cities_CityId",
+                        name: "FK_Address_City_CityId",
                         column: x => x.CityId,
-                        principalTable: "Cities",
+                        principalTable: "City",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Designations",
+                name: "Designation",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -293,29 +269,29 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Designations", x => x.Id);
+                    table.PrimaryKey("PK_Designation", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Designations_Companies_CompanyId",
+                        name: "FK_Designation_Company_CompanyId",
                         column: x => x.CompanyId,
-                        principalTable: "Companies",
+                        principalTable: "Company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_Designations_Departments_DepartmentId",
+                        name: "FK_Designation_Department_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Departments",
+                        principalTable: "Department",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "BusinessLocations",
+                name: "BusinessLocation",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false),
@@ -329,41 +305,41 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BusinessLocations", x => x.Id);
+                    table.PrimaryKey("PK_BusinessLocation", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BusinessLocations_Addresses_AddressId",
+                        name: "FK_BusinessLocation_Address_AddressId",
                         column: x => x.AddressId,
-                        principalTable: "Addresses",
+                        principalTable: "Address",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_BusinessLocations_Cities_CityId",
+                        name: "FK_BusinessLocation_City_CityId",
                         column: x => x.CityId,
-                        principalTable: "Cities",
+                        principalTable: "City",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_BusinessLocations_Companies_CompanyId",
+                        name: "FK_BusinessLocation_Company_CompanyId",
                         column: x => x.CompanyId,
-                        principalTable: "Companies",
+                        principalTable: "Company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_BusinessLocations_Countries_CountryId",
+                        name: "FK_BusinessLocation_Country_CountryId",
                         column: x => x.CountryId,
-                        principalTable: "Countries",
+                        principalTable: "Country",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_BusinessLocations_States_StateId",
+                        name: "FK_BusinessLocation_State_StateId",
                         column: x => x.StateId,
-                        principalTable: "States",
+                        principalTable: "State",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Roles",
+                name: "Role",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -380,30 +356,30 @@ namespace Configuration.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
+                    table.PrimaryKey("PK_Role", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Roles_Companies_CompanyId",
+                        name: "FK_Role_Company_CompanyId",
                         column: x => x.CompanyId,
-                        principalTable: "Companies",
+                        principalTable: "Company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_Roles_Departments_DepartmentId",
+                        name: "FK_Role_Department_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Departments",
+                        principalTable: "Department",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_Roles_Designations_DesignationId",
+                        name: "FK_Role_Designation_DesignationId",
                         column: x => x.DesignationId,
-                        principalTable: "Designations",
+                        principalTable: "Designation",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Addresses_CityId",
-                table: "Addresses",
+                name: "IX_Address_CityId",
+                table: "Address",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
@@ -412,43 +388,43 @@ namespace Configuration.Infrastructure.Data.Migrations
                 column: "BusinessTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessLocations_AddressId",
-                table: "BusinessLocations",
+                name: "IX_BusinessLocation_AddressId",
+                table: "BusinessLocation",
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessLocations_CityId",
-                table: "BusinessLocations",
+                name: "IX_BusinessLocation_CityId",
+                table: "BusinessLocation",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessLocations_CompanyId",
-                table: "BusinessLocations",
+                name: "IX_BusinessLocation_CompanyId",
+                table: "BusinessLocation",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessLocations_CountryId",
-                table: "BusinessLocations",
+                name: "IX_BusinessLocation_CountryId",
+                table: "BusinessLocation",
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessLocations_StateId",
-                table: "BusinessLocations",
+                name: "IX_BusinessLocation_StateId",
+                table: "BusinessLocation",
                 column: "StateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cities_StateId",
-                table: "Cities",
+                name: "IX_City_StateId",
+                table: "City",
                 column: "StateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Companies_BusinessTypeId",
-                table: "Companies",
+                name: "IX_Company_BusinessTypeId",
+                table: "Company",
                 column: "BusinessTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Companies_CategoryId",
-                table: "Companies",
+                name: "IX_Company_CategoryId",
+                table: "Company",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
@@ -457,38 +433,38 @@ namespace Configuration.Infrastructure.Data.Migrations
                 column: "PlanTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departments_CompanyId",
-                table: "Departments",
+                name: "IX_Department_CompanyId",
+                table: "Department",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Designations_CompanyId",
-                table: "Designations",
+                name: "IX_Designation_CompanyId",
+                table: "Designation",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Designations_DepartmentId",
-                table: "Designations",
+                name: "IX_Designation_DepartmentId",
+                table: "Designation",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Roles_CompanyId",
-                table: "Roles",
+                name: "IX_Role_CompanyId",
+                table: "Role",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Roles_DepartmentId",
-                table: "Roles",
+                name: "IX_Role_DepartmentId",
+                table: "Role",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Roles_DesignationId",
-                table: "Roles",
+                name: "IX_Role_DesignationId",
+                table: "Role",
                 column: "DesignationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_States_CountryId",
-                table: "States",
+                name: "IX_State_CountryId",
+                table: "State",
                 column: "CountryId");
         }
 
@@ -496,46 +472,43 @@ namespace Configuration.Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BusinessLocations");
-
-            migrationBuilder.DropTable(
-                name: "clients");
+                name: "BusinessLocation");
 
             migrationBuilder.DropTable(
                 name: "Consumers");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Role");
 
             migrationBuilder.DropTable(
-                name: "Addresses");
+                name: "Address");
 
             migrationBuilder.DropTable(
                 name: "PlanTypes");
 
             migrationBuilder.DropTable(
-                name: "Designations");
+                name: "Designation");
 
             migrationBuilder.DropTable(
-                name: "Cities");
+                name: "City");
 
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "Department");
 
             migrationBuilder.DropTable(
-                name: "States");
+                name: "State");
 
             migrationBuilder.DropTable(
-                name: "Companies");
+                name: "Company");
 
             migrationBuilder.DropTable(
-                name: "Countries");
+                name: "Country");
 
             migrationBuilder.DropTable(
                 name: "BusinessCategories");
 
             migrationBuilder.DropTable(
-                name: "BusinessTypes");
+                name: "BusinessType");
         }
     }
 }

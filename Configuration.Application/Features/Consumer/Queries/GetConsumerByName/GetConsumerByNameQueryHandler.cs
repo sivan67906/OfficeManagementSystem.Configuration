@@ -23,6 +23,7 @@ internal class GetConsumerByNameQueryHandler : IRequestHandler<GetConsumerByName
             Email = consumer.Email,
             Password = consumer.Password,
             PlanTypeId = consumer.PlanTypeId,
+            PlanTypeName = consumer.PlanType.Name,
             PhoneNumber = consumer.PhoneNumber,
             Website = consumer.Website,
             Description = consumer.Description,
